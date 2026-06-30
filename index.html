@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>EduManage</h2>
+            </div>
+            <nav class="menu">
+                <a href="#" class="menu-link active" data-target="dashboard-section"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="#" class="menu-link" data-target="courses-section"><i class="fa-solid fa-book-open"></i> Courses</a>
+                <a href="#" class="menu-link" data-target="students-section"><i class="fa-solid fa-user-graduate"></i> Students</a>
+                <a href="#" class="menu-link" data-target="settings-section"><i class="fa-solid fa-gear"></i> Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="header-title">
+                    <h1 id="page-title">Dashboard</h1>
+                    <p id="page-desc">Overview of your academic center.</p>
+                </div>
+            </header>
+
+            <section id="dashboard-section" class="content-section active">
+                <div class="stats-container">
+                    <div class="card stat-card blue">
+                        <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="card-info"><h3 class="total-students-count">0</h3><p>Total Students</p></div>
+                    </div>
+                    <div class="card stat-card purple">
+                        <div class="card-icon"><i class="fa-solid fa-bookmark"></i></div>
+                        <div class="card-info"><h3>4</h3><p>Active Courses</p></div>
+                    </div>
+                </div>
+                
+                <div class="welcome-box card animate-fade-in" style="margin-top: 25px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white;">
+                    <h2>Welcome back, Admin! 👋</h2>
+                    <p style="margin-top: 10px; opacity: 0.9;">ကျောင်းသားများနှင့် သင်တန်းများကို ဘယ်ဘက် Navigation Menu များမှတစ်ဆင့် စနစ်တကျ စီမံခန့်ခွဲနိုင်ပါပြီ။</p>
+                </div>
+            </section>
+
+            <section id="courses-section" class="content-section">
+                <div class="courses-grid">
+                    <div class="card course-item">
+                        <div class="course-icon"><i class="fa-brands fa-html5"></i></div>
+                        <h3>Web Development BootCamp</h3>
+                        <p>Learn HTML, CSS, JavaScript & Backend.</p>
+                        <span class="badge">Active</span>
+                    </div>
+                    <div class="card course-item">
+                        <div class="course-icon"><i class="fa-solid fa-palette"></i></div>
+                        <h3>UI/UX Advanced Design</h3>
+                        <p>Master Figma, Wireframing, and Prototyping.</p>
+                        <span class="badge">Active</span>
+                    </div>
+                    <div class="card course-item">
+                        <div class="course-icon"><i class="fa-brands fa-python"></i></div>
+                        <h3>Python Data Science</h3>
+                        <p>Data analysis, Visualization and ML basics.</p>
+                        <span class="badge">Active</span>
+                    </div>
+                    <div class="card course-item">
+                        <div class="course-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Cyber Security Essentials</h3>
+                        <p>Network security, Hacking defense & protocols.</p>
+                        <span class="badge">Active</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="students-section" class="content-section">
+                <div class="content-grid">
+                    <div class="card form-card">
+                        <h3><i class="fa-solid fa-user-plus"></i> Register Student</h3>
+                        <form id="student-form">
+                            <div class="input-group">
+                                <label for="studentName">Full Name</label>
+                                <input type="text" id="studentName" placeholder="Enter full name" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="studentEmail">Email Address</label>
+                                <input type="email" id="studentEmail" placeholder="name@example.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="courseSelect">Select Course</label>
+                                <select id="courseSelect" required>
+                                    <option value="" disabled selected>Choose a course</option>
+                                    <option value="Web Development">Web Development BootCamp</option>
+                                    <option value="UI/UX Design">UI/UX Advanced Design</option>
+                                    <option value="Python Data Science">Python Data Science</option>
+                                    <option value="Cyber Security">Cyber Security Essentials</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-submit">Enroll Student</button>
+                        </form>
+                    </div>
+
+                    <div class="card table-card">
+                        <div class="table-header">
+                            <h3><i class="fa-solid fa-list"></i> Enrolled Students (<span class="total-students-count">0</span>)</h3>
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="search-input" placeholder="Search students...">
+                            </div>
+                        </div>
+                        
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Course</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="student-list"></tbody>
+                            </table>
+                            <div id="no-data" class="no-data hidden">
+                                <i class="fa-regular fa-folder-open"></i>
+                                <p>No students found</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings-section" class="content-section">
+                <div class="card" style="max-width: 600px;">
+                    <h3><i class="fa-solid fa-sliders"></i> System Settings</h3>
+                    <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                            <div>
+                                <h4>Automatic Data Backup</h4>
+                                <p style="color: var(--text-muted); font-size: 0.85rem;">Save data to local storage automatically.</p>
+                            </div>
+                            <span style="color: green; font-weight: bold;"><i class="fa-solid fa-circle-check"></i> Enabled</span>
+                        </div>
+                        <div>
+                            <button class="btn-submit" style="background-color: var(--danger);" onclick="clearAllData()">Clear All System Data</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
